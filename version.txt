@@ -1,2 +1,8 @@
+v0.0.0.2
+- added mysqldb api skeleton
+- added mongodb api skeleton
+- added basic structs for the two api body params
+- added requirements for mysqlclient and pymongo
+
 v0.0.0.1
 - Added standard fastapi dependency and hello world root api
