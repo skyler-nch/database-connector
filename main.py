@@ -1,4 +1,8 @@
 from fastapi import FastAPI
+import uvicorn
+from sqlalchemy import create_engine
+from sqlalchemy import text
+import os
 
 from src.structs import MongoBody,MysqlBody
 
@@ -10,12 +14,19 @@ async def root():
 
 @app.post("/mysqldb")
 async def mysql(body:MysqlBody):
-    # i need to know the database, query
-
-    return body
+    with mysqldb_engine.connect() as connection:
+        results = connection.execute(text(body.query))
+        connection.commit()
+    output = {"status":1}
+    if body.query[:6].upper() == "SELECT":
+        output = (res for res in results.mappings())
+    return output
 
 @app.post("/mongodb")
 async def mysql(body:MongoBody):
-    #i need to know the operation, value, database, collection
-    return body
-    
+    return {"message":"this module is not done"}
+
+
+if __name__ == "__main__":
+    mysqldb_engine = create_engine(os.environ.get("MYSQL_CONN"))
+    uvicorn.run(app)

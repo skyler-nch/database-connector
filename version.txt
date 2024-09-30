@@ -1,3 +1,7 @@
+v0.0.1.0
+- Added mysql pooling capability via sqlalchemy
+- Added basic querying capabilities for mysql api
+
 v0.0.0.2
 - added mysqldb api skeleton
 - added mongodb api skeleton
