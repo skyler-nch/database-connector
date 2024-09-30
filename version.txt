@@ -1,3 +1,8 @@
+v0.0.2.0
+- added compose and dockerfile for image building and composing
+- added dotenv dependency to pull .envs 
+- removed __main__ boilerplate, now the only entrypoint is via fastapi run
+
 v0.0.1.1
 - updated mysql body struct to not accept db name anymore
 

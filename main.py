@@ -3,10 +3,15 @@ import uvicorn
 from sqlalchemy import create_engine
 from sqlalchemy import text
 import os
+from dotenv import load_dotenv
 
 from src.structs import MongoBody,MysqlBody
 
+BASEDIR = os.path.abspath(os.path.dirname(__file__))
+load_dotenv(os.path.join(BASEDIR, '.env'))
+
 app = FastAPI()
+mysqldb_engine = create_engine(os.environ.get("MYSQL_CONN"))
 
 @app.get("/")
 async def root():
@@ -27,6 +32,5 @@ async def mysql(body:MongoBody):
     return {"message":"this module is not done"}
 
 
-if __name__ == "__main__":
-    mysqldb_engine = create_engine(os.environ.get("MYSQL_CONN"))
-    uvicorn.run(app)
+
+

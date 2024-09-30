@@ -1,0 +1,16 @@
+services:
+  database-connector:
+    restart: always
+    image: database-connector:latest
+    environment:
+      - MONGO_CONN=${MONGO_CONN_DOCKER}
+      - MYSQL_CONN=${MYSQL_CONN_DOCKER}
+    ports:
+      - 5002:5002
+    networks:
+      - proxynet
+  
+networks: 
+  proxynet:
+    name: backend_docker_network
+
