@@ -1,3 +1,6 @@
+v0.0.1.1
+- updated mysql body struct to not accept db name anymore
+
 v0.0.1.0
 - Added mysql pooling capability via sqlalchemy
 - Added basic querying capabilities for mysql api
